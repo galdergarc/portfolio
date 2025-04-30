@@ -1,0 +1,1320 @@
+body {
+    font-family: 'Krona One';
+    --color-white: #ffffff;
+    --cursor-scale: 1;
+    /* Escala dinámica */
+    cursor: none;
+    /* Ocultar cursor predeterminado */
+    -webkit-tap-highlight-color: #cfddf3!important;
+}
+
+.device-notification {
+    display: none;
+}
+
+.cursorhome {
+    display: none;
+    /* Ocultar por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.cursor--active {
+    display: block;
+    /* Mostrar cursor solo en zonas activas */
+}
+
+.cursor__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+    /* Hacemos las transiciones más rápidas */
+}
+
+.cursor__circle--small {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-white);
+}
+
+.cursor__circle--large {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-white);
+    opacity: 0.5;
+    transform: scale(var(--cursor-scale));
+    /* Escala dinámica */
+}
+
+/* Agrandar el cursor en elementos interactivos */
+[data-pointer] .cursor__circle--large {
+    transform: scale(1.5);
+}
+
+iframe:hover+.cursorhome {
+    display: none;
+    /* Ocultar cursor en iframes */
+}
+
+a:hover {
+    cursor: none;
+}
+
+button:hover {
+    cursor: none;
+}
+
+li:hover {
+    cursor: none;
+}
+
+.header--nav-toggle:hover {
+    cursor: none;
+}
+
+.close-modal:hover {
+    cursor: none;
+}
+
+.header--logo p {
+    text-transform: capitalize !important;
+}
+
+.intro--banner {
+    height: 430px !important;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 4.2rem !important;
+    color: #1B65F2;
+    font-family: 'Krona One', sans-serif;
+    line-height: 1.2 !important;
+    background-image: linear-gradient(45deg, #1b00ff 0%, #d8d7e9 50%, #0f33ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: #1B65F2;
+    font-size: 4.2rem !important;
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    line-height: 1.2 !important;
+    background-image: linear-gradient(45deg, #1b00ff 0%, #d8d7e9 50%, #0f33ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.side-nav li:nth-child(5)::before {
+    top: -3px;
+}
+
+.side-nav li:nth-child(5) span {
+    top: -15px;
+}
+
+.side-nav li:nth-child(6)::before {
+    content: "06";
+}
+
+.side-nav li:nth-child(6) {
+    margin-top: -15px;
+}
+
+.side-nav li:nth-child(7)::before {
+    content: "07";
+}
+
+.side-nav li:nth-child(7) {
+    margin-top: -5px;
+}
+
+.side-nav li:nth-child(8)::before {
+    content: "08";
+}
+
+.outer-nav>li {
+    font-size: 2.8rem !important;
+}
+
+.outer-nav>li.is-vis:hover::before {
+    opacity: 1;
+    /* Cambia la opacidad al hacer hover */
+}
+
+
+img.imginicio {
+    width: 20rem !important;
+    filter: brightness(0.8) drop-shadow(0 0 10px rgb(72, 128, 248));
+    bottom: 50px !important;
+}
+
+img.imginiciopeque {
+    width: 30% !important;
+    filter: brightness(0.8) drop-shadow(0 0 10px rgb(72, 128, 248));
+    bottom: 50px !important;
+    right: 30px !important;
+}
+
+img.imgfin {
+    width: 35% !important;
+    filter: brightness(0.8) drop-shadow(0 0 10px rgb(72, 128, 248));
+    bottom: 50px !important;
+}
+
+img.imgizq {
+    margin-left: 0%;
+    width: 20rem !important;
+    filter: brightness(0.8) drop-shadow(0 0 10px rgb(72, 128, 248));
+    bottom: 50px !important;
+    position: absolute;
+    bottom: -90px;
+    left: 0px;
+}
+
+.texto {
+    width: 50% !important;
+    overflow-wrap: break-word;
+    /* Rompe las palabras largas para que no se desborden */
+    word-wrap: break-word;
+    /* Compatibilidad adicional para navegadores más antiguos */
+    word-break: break-word;
+    /* Opcional, asegura que las palabras se dividan si es necesario */
+    overflow: hidden;
+    /* Evita desbordamientos horizontales */
+}
+
+.texto p {
+    color: #2F63EB;
+    font-size: 11px;
+    background-image: linear-gradient(45deg, #2F63EB 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about--banner h2 {
+    line-height: 1.2 !important;
+}
+
+.about--banner h2::after {
+    content: none;
+}
+
+.about--banner::before {
+    content: none;
+}
+
+.about--banner h2::before {
+    content: none;
+}
+
+.about--banner::after {
+    content: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.carrera {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 900px;
+    max-width: 75%;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto
+}
+
+@media (max-width: 1180px) {
+    .carrera {
+        max-width: 100%
+    }
+}
+
+.carrera--banner {
+    position: relative;
+    height: 475px
+}
+
+.carrera--banner::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 200px;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+    border: 5px solid #0f33ff;
+    border-right-color: transparent;
+    border-bottom-color: transparent
+}
+
+.carrera--banner::after {
+    content: "";
+    position: absolute;
+    top: 75px;
+    left: 400px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background-color: #0f33ff
+}
+
+.carrera--banner h2 {
+    position: relative;
+    margin-top: 35px;
+    font-size: 4rem !important;
+    font-weight: 900;
+    line-height: 1;
+    z-index: 1
+}
+
+.carrera--banner h2::before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 268px;
+    width: 30px;
+    height: 30px;
+    background-color: #0f33ff;
+    border-radius: 50%
+}
+
+.carrera--banner h2::after {
+    content: "";
+    position: absolute;
+    top: 255px;
+    left: 255px;
+    width: 10px;
+    height: 10px;
+    background-color: #0f33ff
+}
+
+.carrera--banner a {
+    padding: 5px 17px 5px 0;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: transparent
+}
+
+.carrera--banner a:hover svg {
+    left: 10px
+}
+
+.carrera--banner a svg {
+    position: relative;
+    left: 5px;
+    width: 15px;
+    fill: #fff;
+    -webkit-transition: left .2s ease-in-out;
+    transition: left .2s ease-in-out
+}
+
+.carrera--banner img {
+    position: absolute;
+    bottom: -90px;
+    right: -12px
+}
+
+.carrera--options {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 600px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.carrera--options>a {
+    position: relative;
+    width: 150px;
+    height: 75px;
+    text-decoration: none;
+    color: #fff;
+    border: 10px solid #0f33ff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat
+}
+
+.carrera--options>a:nth-child(1) {
+    background-image: url("../img/carrera-winners.jpg")
+}
+
+.carrera--options>a:nth-child(2) {
+    background-image: url("../img/carrera-philosophy.jpg")
+}
+
+.carrera--options>a:nth-child(3) {
+    background-image: url("../img/carrera-history.jpg")
+}
+
+.carrera--options>a:hover h3 {
+    bottom: -50px
+}
+
+.carrera--options h3 {
+    position: absolute;
+    bottom: -38px;
+    left: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    -webkit-transition: bottom .2s ease-in-out, left .2s ease-in-out;
+    transition: bottom .2s ease-in-out, left .2s ease-in-out
+}
+
+.carrera--banner h2::after {
+    content: none;
+}
+
+.carrera--banner::before {
+    content: none;
+}
+
+.carrera--banner h2::before {
+    content: none;
+}
+
+.carrera--banner::after {
+    content: none;
+}
+
+@media (max-width: 767px) {
+    .carrera--banner {
+        height: 305px
+    }
+
+    .carrera--banner::before {
+        top: 0;
+        left: 125px
+    }
+
+    .carrera--banner::after {
+        top: 35px;
+        left: 260px
+    }
+
+    .carrera--banner h2 {
+        margin-top: 10px;
+        font-size: 44px
+    }
+
+    .carrera--banner h2::before {
+        top: 28px;
+        left: 168px
+    }
+
+    .carrera--banner h2::after {
+        top: 163px;
+        left: 163px
+    }
+
+    .carrera--banner img {
+        width: 315px
+    }
+}
+
+@media (max-width: 600px) {
+    .carrera--banner {
+        height: auto
+    }
+
+    .carrera--banner::before {
+        left: 155px
+    }
+
+    .carrera--banner::after {
+        left: 310px
+    }
+
+    .carrera--banner h2 {
+        margin-top: 0;
+        font-size: 55px
+    }
+
+    .carrera--banner h2::before {
+        top: 43px;
+        left: 214px
+    }
+
+    .carrera--banner h2::after {
+        top: 205px;
+        left: 205px
+    }
+
+    .carrera--banner img {
+        display: none
+    }
+
+    .carrera--options {
+        display: none
+    }
+}
+
+.evolucion {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 900px;
+    max-width: 75%;
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 1180px) {
+    .evolucion {
+        max-width: 100%;
+    }
+}
+
+.evolucion--banner {
+    position: relative;
+    height: 475px;
+}
+
+.evolucion--banner::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 200px;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+    border: 5px solid #0f33ff;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.evolucion--banner::after {
+    content: "";
+    position: absolute;
+    top: 75px;
+    left: 400px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background-color: #0f33ff;
+}
+
+.evolucion--banner h2 {
+    position: relative;
+    margin-top: 35px;
+    font-size: 4rem !important;
+    font-weight: 900;
+    line-height: 1;
+    z-index: 1;
+    text-align: right;
+}
+
+.evolucion--banner h2::before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 268px;
+    width: 30px;
+    height: 30px;
+    background-color: #0f33ff;
+    border-radius: 50%;
+}
+
+.evolucion--banner h2::after {
+    content: "";
+    position: absolute;
+    top: 255px;
+    left: 255px;
+    width: 10px;
+    height: 10px;
+    background-color: #0f33ff;
+}
+
+.evolucion--banner .texto {
+    margin-left: 50%;
+    text-align: right;
+}
+
+.evolucion--banner a {
+    padding: 5px 17px 5px 0;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: transparent;
+}
+
+.evolucion--banner a:hover svg {
+    left: 10px;
+}
+
+.evolucion--banner a svg {
+    position: relative;
+    left: 5px;
+    width: 15px;
+    fill: #fff;
+    -webkit-transition: left .2s ease-in-out;
+    transition: left .2s ease-in-out;
+}
+
+.evolucion--banner img {
+    position: absolute;
+    bottom: -90px;
+    right: -12px;
+}
+
+.evolucion--options {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 600px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.evolucion--options>a {
+    position: relative;
+    width: 150px;
+    height: 75px;
+    text-decoration: none;
+    color: #fff;
+    border: 10px solid #0f33ff;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.evolucion--options>a:nth-child(1) {
+    background-image: url("../img/evolucion-winners.jpg");
+}
+
+.evolucion--options>a:nth-child(2) {
+    background-image: url("../img/evolucion-philosophy.jpg");
+}
+
+.evolucion--options>a:nth-child(3) {
+    background-image: url("../img/evolucion-history.jpg");
+}
+
+.evolucion--options>a:hover h3 {
+    bottom: -50px;
+}
+
+.evolucion--options h3 {
+    position: absolute;
+    bottom: -38px;
+    left: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    -webkit-transition: bottom .2s ease-in-out, left .2s ease-in-out;
+    transition: bottom .2s ease-in-out, left .2s ease-in-out;
+}
+
+.evolucion--banner h2::after {
+    content: none;
+}
+
+.evolucion--banner::before {
+    content: none;
+}
+
+.evolucion--banner h2::before {
+    content: none;
+}
+
+.evolucion--banner::after {
+    content: none;
+}
+
+@media (max-width: 767px) {
+    .evolucion--banner {
+        height: 305px;
+    }
+
+    .evolucion--banner::before {
+        top: 0;
+        left: 125px;
+    }
+
+    .evolucion--banner::after {
+        top: 35px;
+        left: 260px;
+    }
+
+    .evolucion--banner h2 {
+        margin-top: 10px;
+        font-size: 44px;
+    }
+
+    .evolucion--banner h2::before {
+        top: 28px;
+        left: 168px;
+    }
+
+    .evolucion--banner h2::after {
+        top: 163px;
+        left: 163px;
+    }
+
+    .evolucion--banner img {
+        width: 315px;
+    }
+}
+
+@media (max-width: 600px) {
+    .evolucion--banner {
+        height: auto;
+    }
+
+    .evolucion--banner::before {
+        left: 155px;
+    }
+
+    .evolucion--banner::after {
+        left: 310px;
+    }
+
+    .evolucion--banner h2 {
+        margin-top: 0;
+        font-size: 55px;
+    }
+
+    .evolucion--banner h2::before {
+        top: 43px;
+        left: 214px;
+    }
+
+    .evolucion--banner h2::after {
+        top: 205px;
+        left: 205px;
+    }
+
+    .evolucion--banner img {
+        display: none;
+    }
+
+    .evolucion--options {
+        display: none;
+    }
+}
+
+
+
+.contact {
+    background-image: url("../img/contacto-wallpaper.png") !important;
+}
+
+.contact--lockup .modal {
+    opacity: 0.8;
+}
+
+.work--lockup .slider--item-center .slider--item-image {
+    align-content: center;
+}
+
+
+
+
+/* Modal General */
+.modal.modalportfolio {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.modal-background {
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(4, 0, 255, 0.15), rgba(19, 86, 242, 0.15), rgba(80, 250, 123, 0.15));
+
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: radial-gradient(circle at center, rgba(4, 0, 255, 0.15), rgba(19, 86, 242, 0.15), rgba(80, 250, 123, 0.15));
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Cierre del modal */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #0f33ff;
+}
+
+/* Estructura modal */
+.modal-columns {
+    display: flex;
+    height: 100%;
+}
+
+/* Columna izquierda */
+.modal-left {
+    flex: 0 0 25%;
+    /* Ocupa un 25% del contenedor */
+    max-width: 25%;
+    /* Asegura que no crezca más de 25% */
+    padding: 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(19, 21, 26, 0.9);
+    /* Fondo negro con 90% de opacidad */
+}
+
+.modal-left h2 {
+    font-size: 2rem !important;
+    margin-bottom: 15px;
+}
+
+.modal-left p {
+    font-size: 1.2rem;
+}
+
+/* Columna derecha */
+.modal-right {
+    flex: 0 0 75%;
+    /* Ocupa un 75% del contenedor */
+    max-width: 75%;
+    /* Asegura que no crezca más de 75% */
+    padding: 30px;
+    /* Opcional, ajusta según sea necesario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background: radial-gradient(circle at center, rgba(4, 0, 255, 0.15), rgba(19, 86, 242, 0.15), rgba(80, 250, 123, 0.15));*/
+    /*z-index: -2;*/
+    /*filter: blur(40px);*/
+}
+
+/* Galería Carousel */
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.carousel img:hover {
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+
+/* Controles de la galería */
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 107, 0, 0.2);
+    transform: scale(1.1);
+    border-color: rgba(255, 107, 0, 0.8);
+}
+
+
+
+
+
+/* Ajustes para pantallas grandes (máx. 1200px) */
+@media (max-width: 1200px) {
+    .cursor__circle--large {
+        width: 35px;
+        height: 35px;
+    }
+
+    h1,
+    h2 {
+        font-size: 3.5rem !important;
+    }
+
+    .carrera--banner h2 {
+        font-size: 3.2rem !important;
+    }
+
+    .evolucion--banner h2 {
+        font-size: 3.2rem !important;
+    }
+
+    .modal-left h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .modal-left p {
+        font-size: 1.1rem;
+    }
+
+    .carousel img {
+        width: 250px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 841px) {
+
+    h1,
+    h2 {
+        font-size: 2.8rem !important;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+    }
+
+    img.imginicio {
+        width: 16rem !important;
+
+    }
+
+    .intro {
+        height: 90%;
+    }
+}
+
+/* Ajustes para tablets (máx. 768px) */
+@media (max-width: 768px) {
+    .intro {}
+
+    .intro--banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro--banner::before {
+        display: none;
+    }
+
+    .intro--banner::after {
+        display: none;
+    }
+
+
+    img.imginicio {
+        display: block !important;
+        width: 20rem !important;
+        position: relative;
+        order: 1;
+        /* Imagen en la parte superior */
+        margin-top: 20%;
+        place-items: center;
+    }
+
+    .intro--banner h1 {
+        margin-top: -5%;
+    }
+
+    h1,
+    h2 {
+        font-size: 2.5rem !important;
+        order: 2;
+        /* Título debajo de la imagen */
+    }
+
+    h3 {
+        font-size: 1.2rem !important;
+        margin: 10px 0;
+        order: 3;
+        /* Subtítulo debajo del título */
+        font-size: 0.8rem !important;
+
+    }
+
+    .cta {
+        margin: 20px 0;
+        order: 4;
+        /* Botón debajo del subtítulo */
+    }
+
+    .intro--options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        order: 5;
+        /* Opciones al final */
+    }
+
+    .intro--options a {
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .texto {
+        width: 100% !important;
+    }
+
+    .about--banner {
+        display: flex;
+        flex-direction: column;
+        /* Asegura que los elementos se apilen verticalmente */
+        margin-top: 8%;
+    }
+
+
+    .about--banner h2 {
+        order: 1;
+        /* Primero el título */
+        font-size: 2.5rem;
+        /* Ajusta el tamaño si es necesario */
+        margin-top: 3rem!important;
+    }
+
+
+    .about--banner a {
+        order: 2;
+        /* Enlace debajo de la imagen */
+        /* Añade espaciado vertical */
+    }
+
+    .about--banner .texto {
+        order: 3;
+        /* Texto al final */
+        font-size: 1rem;
+        /* Ajusta el tamaño del texto */
+        line-height: 1.5;
+        /* Mejora la legibilidad */
+        width: 90%;
+        /* Ajusta el ancho del texto */
+        max-width: 600px;
+        /* Limita el ancho máximo del texto */
+    }
+
+    .about--banner .imginicio {
+        order: 4 !important;
+        /* Imagen debajo del título */
+        width: 70% !important;
+        /* Ajusta el tamaño de la imagen */
+        max-width: 300px;
+        /* Limita el tamaño máximo de la imagen */
+
+    }
+
+    .cursor__circle--large {
+        width: 30px;
+        height: 30px;
+    }
+
+    .carrera--banner h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .carrera--banner img.imginicio {
+        width: 10rem !important;
+    }
+
+    .evolucion--banner {
+        display: flex;
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: flex-start; /* Alinea los elementos al inicio */
+        gap: 20px; /* Espaciado entre los elementos */
+    }
+    
+    .evolucion--banner .imgizq {
+        position: relative;
+        display: block!important;
+        order: 1; /* Primero la imagen */
+        align-self: center; /* Centra la imagen horizontalmente */
+        width: 16rem !important;
+        max-width: 300px; /* Limita el tamaño máximo */
+    }
+    
+    .evolucion--banner h2 {
+        order: 2; /* Segundo el título */
+        font-size: 2.5rem; /* Ajusta el tamaño del título */
+        margin: 0;
+        text-align: left; /* Alineación del texto */
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+    }
+    
+    .evolucion--banner .texto {
+        margin-left: auto;
+        order: 3; /* Tercero el texto */
+        font-size: 1rem; /* Ajusta el tamaño del texto */
+        line-height: 1.5; /* Mejora la legibilidad */
+        text-align: left; /* Alinea el texto a la izquierda */
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        max-width: 600px; /* Limita el ancho máximo */
+    }
+    
+
+
+    .modal-left h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .modal-left p {
+        font-size: 1rem;
+    }
+
+    .carousel img {
+        width: 200px;
+        height: 350px;
+    }
+
+    .carrera,
+    .evolucion {
+        padding: 2rem 10px;
+        }
+
+
+
+    .work {
+        display: flex;
+        flex-direction: column; /* Asegura que el título y el slider estén en columnas */
+        gap: 20px; /* Espaciado entre título y slider */
+    }
+    
+    .work h2 {
+        order: 1; /* Primero el título */
+        text-align: center;
+        font-size: 2.5rem; /* Ajusta el tamaño para pantallas más pequeñas */
+        margin-bottom: 10px;
+    }
+    
+    .work--lockup {
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 70%;
+    }
+    
+    .work--lockup .slider--item-left, .work--lockup .slider--item-right{
+        display: none!important;
+    }
+    
+    .modal-columns {
+        flex-direction: column; /* Cambia a columnas verticales */
+        height: 100%; /* Asegura que el modal ocupe todo el espacio vertical */
+    }
+    
+    .modal-left,
+    .modal-right {
+        flex: 0 0 auto; /* Permite que la altura se ajuste al contenido */
+        max-width: 100%; /* Asegura que ocupen el 100% del ancho */
+        padding: 20px; /* Ajusta el padding para móviles */
+    }
+    
+    .modal-left {
+        display: none!important;
+        height: auto; /* Se adapta al contenido */
+        min-height: 10%;
+        max-height: 20%;
+        display: flex; /* Asegura que el contenido esté alineado correctamente */
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .modal-left h2 {
+        font-size: 1.8rem; /* Ajusta el tamaño del título */
+    }
+    
+    .modal-left p {
+        font-size: 1rem; /* Reduce el tamaño del texto */
+    }
+    
+    .modal-right {
+        flex: 1; /* Toma el resto del espacio disponible */
+        height: auto; /* Se adapta al contenido */
+    }
+    
+   
+    .contact{
+        background: border-box;
+    }
+    .outer-nav>li{
+        font-size: 1.6rem !important;
+    }
+    .work--lockup .slider--item-center{
+        height: 25rem;
+    }
+    .work--lockup .slider--next, .work--lockup .slider--prev {
+        top: 159px;
+    }
+
+
+}
+
+/* Ajustes para móviles (máx. 576px) */
+@media (max-width: 576px) {
+    .cursor__circle--large {
+        width: 25px;
+        height: 25px;
+    }
+
+    h1,
+    h2 {
+        font-size: 2.2rem !important;
+    }
+
+    .carrera--banner h2,
+    .evolucion--banner h2 {
+        font-size: 2rem !important;
+    }
+
+    .modal-left h2 {
+        font-size: 1.4rem !important;
+    }
+
+    .modal-left p {
+        font-size: 0.9rem;
+    }
+
+    .carousel img {
+        width: 150px;
+        height: 300px;
+    }
+
+    .gallery-carousel {
+        padding: 0 10px;
+    }
+
+    .control-btn {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+}
+
+/* Ajustes para móviles pequeños (máx. 400px) */
+@media (max-width: 400px) {
+    .cursor__circle--large {
+        display: none;
+        /* Ocultar para pantallas muy pequeñas */
+    }
+
+    h1,
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .carrera--banner h2,
+    .evolucion--banner h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .modal-left h2 {
+        font-size: 1.2rem !important;
+    }
+
+    .modal-left p {
+        font-size: 0.8rem;
+    }
+
+    .carousel img {
+        width: 120px;
+        height: 250px;
+    }
+
+    .control-btn {
+        font-size: 1rem;
+        padding: 6px;
+    }
+}
