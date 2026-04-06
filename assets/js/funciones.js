@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const supportsCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   // Botones y secciones
   const hireUsButton = document.getElementById('btn-hire-us');
@@ -115,46 +116,69 @@ document.addEventListener('DOMContentLoaded', function () {
   const modals = document.querySelectorAll(".modal.modalportfolio");
   const closeButtons = document.querySelectorAll(".close-modal");
 
+  const openPortfolioModal = (modal) => {
+    if (!modal) return;
+    modal.style.display = "block";
+    modal.classList.remove("out");
+    requestAnimationFrame(() => modal.classList.add("is-open"));
+    document.body.style.overflow = "hidden";
+    document.body.classList.add("portfolio-modal-open");
+  };
+
+  const closePortfolioModal = (modal) => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.classList.add("out");
+
+    const finalizeClose = () => {
+      modal.style.display = "none";
+      modal.classList.remove("out");
+      document.body.style.overflow = "";
+      document.body.classList.remove("portfolio-modal-open");
+      modal.removeEventListener("transitionend", handleTransitionEnd);
+    };
+
+    const handleTransitionEnd = (event) => {
+      if (event.target === modal && event.propertyName === "opacity") {
+        finalizeClose();
+      }
+    };
+
+    modal.addEventListener("transitionend", handleTransitionEnd);
+    setTimeout(finalizeClose, 220);
+  };
+
   openModalButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
       event.preventDefault();
       const modalId = this.getAttribute("data-modal");
       const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = "block";
-        modal.classList.remove("out");
-        document.body.style.overflow = "hidden";
-      }
+      openPortfolioModal(modal);
     });
   });
 
   closeButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const modal = this.closest(".modal");
-      if (modal) {
-        modal.classList.add("out");
-        setTimeout(() => {
-          modal.style.display = "none";
-          document.body.style.overflow = "";
-        }, 1000);
-      }
+      closePortfolioModal(modal);
     });
   });
 
   window.addEventListener("click", function (event) {
     modals.forEach((modal) => {
       if (event.target === modal) {
-        modal.classList.add("out");
-        setTimeout(() => {
-          modal.style.display = "none";
-          document.body.style.overflow = "";
-        }, 1000);
+        closePortfolioModal(modal);
       }
-    });
+    })
   });
   const cursor = document.querySelector(".cursorhome");
   const cursorSmall = document.querySelector(".cursor__circle--small");
   const cursorLarge = document.querySelector(".cursor__circle--large");
+
+  if (!supportsCustomCursor || !cursor || !cursorSmall || !cursorLarge) {
+    if (cursor) cursor.style.display = "none";
+    return;
+  }
 
   let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   let smallPos = { ...mousePos };
@@ -194,25 +218,28 @@ document.addEventListener('DOMContentLoaded', function () {
     cursorSmall.style.opacity = "1";
   };
 
-  const handleMouseOut = () => {
-    cursor.classList.remove("cursor--active");
+  const handleMouseOut = (e) => {
+    // Hide only when leaving the document/viewport, not when moving between children.
+    if (!e.relatedTarget) {
+      cursor.classList.remove("cursor--active");
+    }
   };
 
   // Eventos con listeners no pasivos
-  document.addEventListener("mousemove", handleMouseMove, { passive: false });
-  document.addEventListener("mouseout", handleMouseOut, { passive: false });
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseout", handleMouseOut);
 
   document.addEventListener("mouseover", (e) => {
     if (e.target && e.target.hasAttribute("data-pointer")) {
       handleHover(e);
     }
-  }, { passive: false });
+  });
 
   document.addEventListener("mouseout", (e) => {
     if (e.target && e.target.hasAttribute("data-pointer")) {
       handleLeave();
     }
-  }, { passive: false });
+  });
 
   requestAnimationFrame(updateCursor);
 });

@@ -51,6 +51,17 @@ body {
     /* Added for 3D effects */
 }
 
+@media (hover: none), (pointer: coarse) {
+    :root,
+    body {
+        cursor: auto !important;
+    }
+
+    .cursorhome {
+        display: none !important;
+    }
+}
+
 .cursorhome {
     position: fixed;
     top: 0;

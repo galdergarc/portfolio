@@ -8,6 +8,16 @@ body {
     -webkit-tap-highlight-color: #cfddf3!important;
 }
 
+@media (hover: none), (pointer: coarse) {
+    body {
+        cursor: auto !important;
+    }
+
+    .cursorhome {
+        display: none !important;
+    }
+}
+
 .device-notification {
     display: none;
 }
@@ -127,18 +137,6 @@ h2 {
 
 .side-nav li:nth-child(6) {
     margin-top: -15px;
-}
-
-.side-nav li:nth-child(7)::before {
-    content: "07";
-}
-
-.side-nav li:nth-child(7) {
-    margin-top: -5px;
-}
-
-.side-nav li:nth-child(8)::before {
-    content: "08";
 }
 
 .outer-nav>li {
@@ -551,7 +549,7 @@ img.imgizq {
     font-weight: 900;
     line-height: 1;
     z-index: 1;
-    text-align: right;
+    text-align: left;
 }
 
 .evolucion--banner h2::before {
@@ -576,8 +574,13 @@ img.imgizq {
 }
 
 .evolucion--banner .texto {
-    margin-left: 50%;
-    text-align: right;
+    margin-left: 0;
+    text-align: left;
+}
+
+.evolucion--banner .imgizq {
+    left: auto;
+    right: -12px;
 }
 
 .evolucion--banner a {
@@ -676,6 +679,7 @@ img.imgizq {
 .evolucion--banner::after {
     content: none;
 }
+
 
 @media (max-width: 767px) {
     .evolucion--banner {
@@ -777,7 +781,20 @@ img.imgizq {
     height: 100%;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
-    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+}
+
+.modal.modalportfolio.is-open {
+    opacity: 1;
+}
+
+body.portfolio-modal-open {
+    cursor: auto !important;
+}
+
+body.portfolio-modal-open .cursorhome {
+    display: none !important;
 }
 
 .modal-background {

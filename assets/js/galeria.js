@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const supportsCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const urlParams = new URLSearchParams(window.location.search);
     const project = urlParams.get("project");
 
@@ -304,6 +305,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cursorSmall = document.querySelector(".cursor__circle--small");
     const cursorLarge = document.querySelector(".cursor__circle--large");
 
+    if (!supportsCustomCursor || !cursor || !cursorSmall || !cursorLarge) {
+        if (cursor) cursor.style.display = "none";
+        return;
+    }
+
     let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     let smallPos = { ...mousePos };
     let largePos = { ...mousePos };
@@ -341,8 +347,10 @@ document.addEventListener("DOMContentLoaded", () => {
         cursorSmall.style.opacity = "1";
     };
 
-    const handleMouseOut = () => {
-        cursor.style.display = "none";
+    const handleMouseOut = (e) => {
+        if (!e.relatedTarget) {
+            cursor.style.display = "none";
+        }
     };
 
     document.addEventListener("mousemove", handleMouseMove);

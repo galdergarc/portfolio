@@ -2,37 +2,39 @@
 
 $( document ).ready(function() {
 
-  // DOMMouseScroll included for firefox support
   var canScroll = true,
       scrollController = null;
-  $(this).on('mousewheel DOMMouseScroll', function(e){
 
-    if (!($('.outer-nav').hasClass('is-vis'))) {
+  function lockScrollStep() {
+    canScroll = false;
+    clearTimeout(scrollController);
+    scrollController = setTimeout(function(){
+      canScroll = true;
+    }, 800);
+  }
 
-      e.preventDefault();
-
-      var delta = (e.originalEvent.wheelDelta) ? -e.originalEvent.wheelDelta : e.originalEvent.detail * 20;
-
-      if (delta > 50 && canScroll) {
-        canScroll = false;
-        clearTimeout(scrollController);
-        scrollController = setTimeout(function(){
-          canScroll = true;
-        }, 800);
-        updateHelper(1);
-      }
-      else if (delta < -50 && canScroll) {
-        canScroll = false;
-        clearTimeout(scrollController);
-        scrollController = setTimeout(function(){
-          canScroll = true;
-        }, 800);
-        updateHelper(-1);
-      }
-
+  function handleWheel(e) {
+    if ($('.outer-nav').hasClass('is-vis')) {
+      return;
     }
 
-  });
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+
+    var delta = e.deltaY;
+
+    if (delta > 50 && canScroll) {
+      lockScrollStep();
+      updateHelper(1);
+    }
+    else if (delta < -50 && canScroll) {
+      lockScrollStep();
+      updateHelper(-1);
+    }
+  }
+
+  window.addEventListener('wheel', handleWheel, { passive: false });
 
   $('.side-nav li, .outer-nav li').click(function(){
 
